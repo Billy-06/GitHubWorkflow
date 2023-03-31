@@ -1,0 +1,9 @@
+# Set up a gitignore file with all the files that should not be tracked by git in a typical python project
+*.pyc
+*.swp
+*.swo
+*.DS_Store
+.idea/
+.vscode/
+.venv/
+venv
