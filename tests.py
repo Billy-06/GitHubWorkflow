@@ -1,2 +1,12 @@
+import pytest
+
+
+class TestClass(object):
+    def test_one(self):
+        x = "this"
+        assert 'h' in x
+
+
 def run():
-    print("Hello This is the first test")
+    # Run the tests
+    assert 1 == 1
