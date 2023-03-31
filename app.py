@@ -1,1 +1,3 @@
-from bookstore import app
+from bookstore import app, routes
+
+# app.run()
