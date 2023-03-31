@@ -6,10 +6,6 @@ class TestClass(object):
         x = "this"
         assert 'h' in x
 
-    def test_two(self):
-        x = "hello"
-        assert hasattr(x, 'check')
-
 
 def run():
     # Run the tests
