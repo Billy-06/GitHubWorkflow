@@ -82,7 +82,6 @@ jobs:
     runs-on: [ubuntu-latest, windows-latest]
     needs: [setup_ubuntu, setup_windows]
     steps:
-      - uses: actions/checkout@v2
       - name: Run tests
         run: |
           python -m pytest tests.py
