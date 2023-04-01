@@ -40,9 +40,13 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
       # This action runs the tests
-      - name: Run tests
+      - name: Show environment variables
         run: |
           env | sort
+      - name: Run pytests
+        run: |
+          source venv/bin/activate
+          python -m pytest tests.py
 
   # This job sets up the environment and runs the tests
   setup_windows:
@@ -72,28 +76,32 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       # This action runs the tests
-      - name: Run tests
+      - name: Show environment variables
         run: |
           "Get-ChildItem Env: | Sort-Object Name"
-
-  # Run python tests on after setting up the environment
-  run_pytest_ubuntu:
-    name: Run Pytest Ubuntu
-    runs-on: ubuntu-latest
-    needs: setup_ubuntu
-    steps:
-      - name: Run pytests
-        run: |
-          source venv/bin/activate
-          python -m pytest tests.py
-
-  # Run python tests on after setting up the environment
-  run_pytest_windows:
-    name: Run Pytest Windows
-    runs-on: windows-latest
-    needs: setup_windows
-    steps:
       - name: Run pytests
         run: |
           venv\Scripts\activate
           python -m pytest tests.py
+
+  # Run python tests on after setting up the environment
+  # run_pytest_ubuntu:
+  #   name: Run Pytest Ubuntu
+  #   runs-on: ubuntu-latest
+  #   needs: setup_ubuntu
+  #   steps:
+  #     - name: Run pytests
+  #       run: |
+  #         source venv/bin/activate
+  #         python -m pytest tests.py
+
+  # # Run python tests on after setting up the environment
+  # run_pytest_windows:
+  #   name: Run Pytest Windows
+  #   runs-on: windows-latest
+  #   needs: setup_windows
+  #   steps:
+  #     - name: Run pytests
+  #       run: |
+  #         venv\Scripts\activate
+  #         python -m pytest tests.py
