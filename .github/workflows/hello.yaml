@@ -2,7 +2,12 @@
 name: Environment Setup & Tests
 
 # This means that the action will run on every push and pull request
-on: [push, pull_request]
+# on: [push, pull_request]
+on:
+  push:
+    branches: [master, development]
+  pull_request:
+    branches: [master]
 
 # Each workflow is made up of one or more jobs. Each job is a set of steps that are run sequentially
 # The job is run on a fresh instance of the virtual environment
@@ -70,3 +75,14 @@ jobs:
       - name: Run tests
         run: |
           "Get-ChildItem Env: | Sort-Object Name"
+
+  # Run python tests on after setting up the environment
+  Run_Pytest:
+    name: Run Pytest
+    runs-on: [ubuntu-latest, windows-latest]
+    needs: [setup_ubuntu, setup_windows]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          python -m pytest tests.py
