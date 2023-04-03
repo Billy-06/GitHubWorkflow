@@ -93,6 +93,15 @@ jobs:
       - name: Ubuntu Message
         run: |
           echo "Testing and env setup on ubuntu complete"
+          source venv/bin/activate
+          pip install sqlalchemy
+          pip install flask-sqlalchemy
+          pip install flask-migrate
+          pip install flask-login
+          pip install flask-wtf
+          pip install flask-bcrypt
+          pip install flask-mail
+          pip install flask-bootstrap
 
   # Run python tests on after setting up the environment
   run_pytest_windows:
@@ -103,3 +112,12 @@ jobs:
       - name: Windows Message
         run: |
           echo "Testing and env setup on windows complete"
+          venv\Scripts\activate
+          pip install sqlalchemy
+          pip install flask-sqlalchemy
+          pip install flask-migrate
+          pip install flask-login
+          pip install flask-wtf
+          pip install flask-bcrypt
+          pip install flask-mail
+          pip install flask-bootstrap
